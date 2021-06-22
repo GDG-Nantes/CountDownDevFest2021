@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DevFest Graffiti</title>
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  </head>
+  <body>
+    <script type="text/javascript" src="./bundle.js"></script>
+    <div id="game-canvas">
+        <div class="game-details">
+          <div class="game-logo">
+            <img src="./photos/logo-devfest-white.png" width="320px" />
+          </div>
+          <div class="game-details-center">
+            <h1 class="current-song"></h1>
+          </div>
+          <div class="game-details-left">
+            <div class="score">Score: 0</div>
+            <div class="streak">Streak: 0</div>
+          </div>
+        </div>
+
+        <div class="countdown-wrapper">
+          <div class="countdown">10:00:00</div>
+        </div>  
+
+
+        <div class="game-logo2-wrapper">
+          <img src="./photos/logo-devfest-white.png" width="150px" />
+        </div>
+
+        <div class="join-wrapper">
+          <div class="join">Join the party!</div>
+          <div class="join">https://devfesthero.web.app</div>
+        </div>  
+
+        <div class="instructions">
+          <img class="instructions-logo" src="./photos/logo-devfest-white.png" height="70px"/>
+          <div class="instructions-pseudo">
+            <input id="pseudo" class="instructions-input" value="" placeholder="Rocker Name">
+            <p id="error-message" style="display:none">Please enter a name to participate</p>
+            <p id="error-pwd" style="display:none">Wrong password</p>
+          </div>
+          <div class="instructions-text">
+            <h1>Instructions</h1>
+            <p>As the colored notes move to the circles at the bottom of the fret board, touch the corresponding note in sequence to score points!</p>
+            <p>Score enough notes in a row, and your score multiplier will increase!</p>
+          </div>
+          <ul class="letters">
+            <li class="green">Q</li>
+            <li class="red">S</li>
+            <li class="yellow">D</li>
+          </ul>
+          <div class="instructions-validate" role="button">
+            <div class="close-instructions" role="button">
+              Let's rock!
+            </div>
+          </div>
+        </div>
+
+        <div id="opacity" style="display:none"></div>
+      </div>
+    </div>
+    <div id="song"></div>
+    
+  </body>
+</html>
