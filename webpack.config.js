@@ -5,11 +5,13 @@ module.exports = {
   entry: './src/index.js',
   // target: 'node',
   output: {
-    // path: path.resolve(__dirname, 'lib'),
+    path: path.resolve(__dirname),
     filename: './bundle.js',
+    sourceMapFilename: 'bundle.js.map',
   },
   // resolve: {
   //   extensions: ['.js']
   // },
-  devtool: 'source-map',
+  //devtool: 'source-map',
+  devtool: 'eval-cheap-source-map',
 }

@@ -1,10 +1,11 @@
+// TODO FIX
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
-import Timer from './timer'
+import undefined from 'firebase/firestore'
+import Timer from './timer.js'
 import { AudioPlayer } from './audio.js'
 //import { VideoPlayer } from './video_player'
-import { PLAYLIST, LAST_SONGS_PLAYLIST } from './playlist'
-import undefined from 'firebase/firestore'
+import { PLAYLIST, LAST_SONGS_PLAYLIST } from './playlist.js'
 
 // Firebase database const
 const COLLECTION_USERS = 'users'
@@ -34,7 +35,8 @@ class Game {
     this.firebaseListenerForChangeOfScores = undefined
 
     // Init the database connection
-    this.initFirebase()
+    //TODO FIX
+    //this.initFirebase()
 
     if (this.countDownMode) {
       // We init the Audio player

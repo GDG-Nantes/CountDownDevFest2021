@@ -1,4 +1,5 @@
-import Game from './game'
+import Game from './game.js'
+import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   // We check if the url contains Hash "countdown" to know if we're on countdown mode
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // We watch for close instructions click to start the game
   const instructionElt = document.querySelector('.instructions')
-  const closeInstructionElt = document.querySelector('.close-instructions')
 
   const inputElt = document.getElementById('pseudo')
   if (countDownMode) {
@@ -27,7 +27,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  closeInstructionElt.addEventListener('click', startScreenGame)
+  /**
+   * PROOF
+   */
+  const textArea = document.body.querySelector('#draw-text')
+  const docalisme = new SVGTextAnimate(
+    './css/fonts/SlimWandals_PERSONAL.ttf',
+    {
+      duration: 600,
+      direction: 'normal',
+      'fill-mode': 'forwards',
+      delay: 150,
+      mode: 'onebyone',
+    },
+    {
+      fill: '#20ae94',
+      stroke: '#20ae94',
+      'stroke-width': '2px',
+      'font-size': 80,
+    },
+  )
+
+  //await docalisme.setFont()
+  docalisme.setFont().then((_) => {
+    docalisme.create('Hello World', '#draw-text')
+  })
+  const opensans = new SVGTextAnimate(
+    './css/fonts/docallismeonstreet.otf',
+    {
+      duration: 600,
+      direction: 'normal',
+      'fill-mode': 'forwards',
+      delay: 150,
+      mode: 'onebyone',
+    },
+    {
+      fill: '#f1d367',
+      stroke: '#f1d367',
+      'stroke-width': '2px',
+      'font-size': 80,
+    },
+  )
+
+  opensans.setFont().then((_) => opensans.create('DevFest Rocks', '#draw-text2'))
+
+  /**
+   * END PROOF
+   */
 
   function startScreenGame() {
     const input = inputElt.value

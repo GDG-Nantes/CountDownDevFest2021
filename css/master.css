@@ -1,0 +1,323 @@
+:root {
+  --stop-color-1: #bddcee;
+  --stop-color-2: #ffffff;
+  @property --fill-color {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #fff;
+  }
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Special Elite', cursive !important;
+  background: linear-gradient(var(--stop-color-1), var(--stop-color-2));
+  color: #3b3b3b;
+}
+
+input {
+  font-family: 'Special Elite', cursive !important;
+}
+
+#game-canvas {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-areas:
+    'logo'
+    'song';
+  padding: 0;
+}
+
+.game-logo {
+  grid-area: logo;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.countdown-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.game-details-left {
+  display: none;
+}
+
+.join-wrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 21%;
+}
+
+.join {
+  font-size: 2.3em;
+  line-height: 2.3em;
+  margin: 0;
+  text-align: center;
+}
+
+.game-details-center {
+  grid-area: song;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 20px;
+}
+
+.game-progress {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+#song {
+  display: none;
+}
+
+.game-control-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-weight: 700;
+}
+
+.game-control-panel button {
+  width: 120px;
+  height: 25px;
+  border-radius: 7px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  background: #ffffff;
+}
+
+.game-control-panel button:hover {
+  background: #cfcfcf;
+  cursor: pointer;
+}
+
+.header {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3b3b3b;
+}
+
+.professional-links {
+  display: flex;
+  justify-content: flex-end;
+  width: 100px;
+}
+
+.creator {
+  width: 100px;
+}
+
+.creator span {
+  font-weight: 500;
+}
+
+.title {
+  letter-spacing: 2.5px;
+}
+
+.header h1,
+.header p {
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0 20px;
+}
+
+.professional-links img {
+  height: 30px;
+  width: 30px;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  transform: translateY(2.5px);
+}
+
+.game-start,
+.look-around-instructions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 3px 3px black;
+  letter-spacing: 1.5px;
+  z-index: 20;
+}
+
+.look-around-instructions {
+  text-align: center;
+}
+
+.instructions {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.draw-area {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.draw-area svg path {
+  /*fill: #20ae94 !important;*/
+}
+
+.close-instructions {
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 2em;
+  background: red;
+  width: 100%;
+  margin: 0 1em;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.close-instructions h1:hover {
+  cursor: pointer;
+}
+
+.close-instructions h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.close-instructions h2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.instructions-pseudo {
+  font-size: 18px;
+  width: 350px;
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.instructions-input {
+  padding: 0.5em;
+  font-size: 1.3em;
+  border: 0;
+  border-radius: 5px;
+  text-align: center;
+  width: 320px;
+}
+
+.instructions .letters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  font-size: 25px;
+  font-weight: 700;
+  width: 320px;
+  color: black;
+  padding-inline-start: 0;
+}
+
+.instructions .letters li {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LEAVE AT BOTTOM OF CSS FILE */
+.hidden {
+  display: none;
+}
+
+#opacity {
+  position: absolute;
+  overflow: hidden;
+  background: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 5s;
+  z-index: 100;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#opacity video {
+  height: 95vh;
+}
+#opacity.black {
+  opacity: 1;
+}
