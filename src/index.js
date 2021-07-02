@@ -30,6 +30,49 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * PROOF
    */
+  const socket = io('ws://localhost:3001')
+  socket.on('connect', () => {})
+  socket.on('tweet', (json) => {
+    if (json.data) {
+      drawText(json.data.text)
+      //console.log({ type: 'add_tweet', payload: json })
+    }
+  })
+  socket.on('heartbeat', (data) => {
+    console.log({ type: 'update_waiting' })
+  })
+  socket.on('error', (data) => {
+    console.log({ type: 'show_error', payload: data })
+  })
+  socket.on('authError', (data) => {
+    console.log('data =>', data)
+    console.log({ type: 'add_errors', payload: [data] })
+  })
+
+  function drawText(textToDraw) {
+    const docalisme = new SVGTextAnimate(
+      './css/fonts/SlimWandals_PERSONAL.ttf',
+      {
+        duration: 600,
+        direction: 'normal',
+        'fill-mode': 'forwards',
+        delay: 150,
+        mode: 'onebyone',
+      },
+      {
+        fill: '#20ae94',
+        stroke: '#20ae94',
+        'stroke-width': '2px',
+        'font-size': 80,
+      },
+    )
+
+    //await docalisme.setFont()
+    docalisme.setFont().then((_) => {
+      docalisme.create('Hello World', '#draw-text')
+    })
+  }
+
   const textArea = document.body.querySelector('#draw-text')
   const docalisme = new SVGTextAnimate(
     './css/fonts/SlimWandals_PERSONAL.ttf',
