@@ -205,6 +205,11 @@ const streamTweets = (socket, token) => {
           reconnect(stream, socket, token)
         }
       })
+
+    socket.on('disconnect', () => {
+      console.log('Disconnect')
+      stream.abort()
+    })
   } catch (e) {
     console.log('y a eu une erreur')
     socket.emit('authError', authMessage)
@@ -240,6 +245,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 async function initTwitterApp() {
+  await cleanRules()
   const rules = await getRules()
   console.log('GetRules, ', rules)
   let shouldSetRules = true

@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //await docalisme.setFont()
     docalisme.setFont().then((_) => {
-      docalisme.create('Hello World', '#draw-text')
+      docalisme.create(textToDraw, '#draw-text')
     })
   }
 
