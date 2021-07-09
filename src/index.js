@@ -1,4 +1,5 @@
 import Game from './game.js'
+import { getNextFont } from './font-list'
 import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,89 +31,30 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * PROOF
    */
-  const socket = io('ws://localhost:3001')
-  socket.on('connect', () => {})
-  socket.on('tweet', (json) => {
-    if (json.data) {
-      drawText(json.data.text)
-      //console.log({ type: 'add_tweet', payload: json })
-    }
-  })
-  socket.on('heartbeat', (data) => {
-    console.log({ type: 'update_waiting' })
-  })
-  socket.on('error', (data) => {
-    console.log({ type: 'show_error', payload: data })
-  })
-  socket.on('authError', (data) => {
-    console.log('data =>', data)
-    console.log({ type: 'add_errors', payload: [data] })
-  })
-
-  function drawText(textToDraw) {
-    const docalisme = new SVGTextAnimate(
-      './css/fonts/SlimWandals_PERSONAL.ttf',
-      {
-        duration: 600,
-        direction: 'normal',
-        'fill-mode': 'forwards',
-        delay: 150,
-        mode: 'onebyone',
-      },
-      {
-        fill: '#20ae94',
-        stroke: '#20ae94',
-        'stroke-width': '2px',
-        'font-size': 80,
-      },
-    )
-
-    //await docalisme.setFont()
-    docalisme.setFont().then((_) => {
-      docalisme.create(textToDraw, '#draw-text')
-    })
-  }
+  //initWebSocketConnexion();
 
   const textArea = document.body.querySelector('#draw-text')
   const docalisme = new SVGTextAnimate(
-    './css/fonts/SlimWandals_PERSONAL.ttf',
+    './css/fonts/Y-Yo_Tags.ttf',
     {
-      duration: 600,
+      duration: 100,
       direction: 'normal',
       'fill-mode': 'forwards',
-      delay: 150,
-      mode: 'onebyone',
+      //delay: 150,
+      mode: 'sync', //'onebyone',
     },
     {
       fill: '#20ae94',
       stroke: '#20ae94',
-      'stroke-width': '2px',
-      'font-size': 80,
+      'stroke-width': '0px',
+      'font-size': 100,
     },
   )
 
   //await docalisme.setFont()
   docalisme.setFont().then((_) => {
-    docalisme.create('Hello World', '#draw-text')
+    docalisme.create('abct mon 1-9 !@#', '#draw-text')
   })
-  const opensans = new SVGTextAnimate(
-    './css/fonts/docallismeonstreet.otf',
-    {
-      duration: 600,
-      direction: 'normal',
-      'fill-mode': 'forwards',
-      delay: 150,
-      mode: 'onebyone',
-    },
-    {
-      fill: '#f1d367',
-      stroke: '#f1d367',
-      'stroke-width': '2px',
-      'font-size': 80,
-    },
-  )
-
-  opensans.setFont().then((_) => opensans.create('DevFest Rocks', '#draw-text2'))
 
   /**
    * END PROOF
@@ -177,5 +119,58 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     fullscreenMode = !fullscreenMode
+  }
+
+  function initWebSocketConnexion() {
+    const socket = io('ws://localhost:3001')
+    socket.on('connect', () => {})
+    socket.on('tweet', (json) => {
+      if (json.data) {
+        drawText(json.data.text)
+        //console.log({ type: 'add_tweet', payload: json })
+      }
+    })
+    socket.on('heartbeat', (data) => {
+      console.log({ type: 'update_waiting' })
+    })
+    socket.on('error', (data) => {
+      console.log({ type: 'show_error', payload: data })
+    })
+    socket.on('authError', (data) => {
+      console.log('data =>', data)
+      console.log({ type: 'add_errors', payload: [data] })
+    })
+  }
+
+  function drawText(textToDraw) {
+    // Detect Constraints
+    // TODO
+    const fontToUse = getNextFont({
+      withSpecialChars: false,
+      withNumbers: false,
+    })
+    // TODO better sanitize (to restrictive)
+    const sanitizeText = textToDraw.replace(/[^a-zA-Z]/, '')
+    const fontInSVG = new SVGTextAnimate(
+      `./css/fonts/${fontToUse.fontFile}`,
+      {
+        duration: 600,
+        direction: 'normal',
+        'fill-mode': 'forwards',
+        delay: 150,
+        mode: 'onebyone',
+      },
+      {
+        fill: '#20ae94', // TODO
+        stroke: '#20ae94', // TODO
+        'stroke-width': fontToUse['stroke-width'],
+        'font-size': 100 * fontToUse['font-size-multiplier'],
+      },
+    )
+
+    //await fontInSVG.setFont()
+    fontInSVG.setFont().then((_) => {
+      fontInSVG.create(sanitizeText, '#draw-text')
+    })
   }
 })
