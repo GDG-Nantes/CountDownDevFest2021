@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   //initWebSocketConnexion();
 
-  const textArea = document.body.querySelector('#draw-text')
+  setInterval(() => drawText('Hello World'), 15000)
+  drawText('Hello World')
+  /*const textArea = document.body.querySelector('#draw-text')
   const docalisme = new SVGTextAnimate(
     './css/fonts/Y-Yo_Tags.ttf',
     {
@@ -54,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //await docalisme.setFont()
   docalisme.setFont().then((_) => {
     docalisme.create('abct mon 1-9 !@#', '#draw-text')
-  })
+  })*/
 
   /**
    * END PROOF
@@ -150,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
       withNumbers: false,
     })
     // TODO better sanitize (to restrictive)
-    const sanitizeText = textToDraw.replace(/[^a-zA-Z]/, '')
+    const sanitizeText = textToDraw.toLowerCase().replace(/[^a-zA-Z ]/, '')
     const fontInSVG = new SVGTextAnimate(
       `./css/fonts/${fontToUse.fontFile}`,
       {

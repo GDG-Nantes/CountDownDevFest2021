@@ -10,25 +10,26 @@ function checkFontUse(font, constraints) {
   if (constraints.withNumbers && font.avoidNumbers) {
     return false
   }
-  return lastFonts.find((fontTemp) => fontTemp.fontFile === font.fontFile)
+  return !lastFonts.find((fontTemp) => fontTemp.fontFile === font.fontFile)
 }
 
 export function getNextFont(constraints) {
   let chooseFont = undefined
-  let index = Math.random(FONT_LIST.length) + 1
+  let index = Math.round(Math.random(FONT_LIST.length) * 10)
   do {
     chooseFont = FONT_LIST[index]
-    index = Math.random(FONT_LIST.length) + 1
+    index = Math.round(Math.random(FONT_LIST.length) * 10)
   } while (!checkFontUse(chooseFont, constraints))
   lastFonts[lastFontIndex] = chooseFont
   lastFontIndex = (lastFontIndex + 1) % 10
+  return chooseFont
 }
 
 const FONT_LIST = [
   // SlimWandals_PERSONAL
   {
     fontFile: 'SlimWandals_PERSONAL.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: true,
@@ -36,7 +37,7 @@ const FONT_LIST = [
   // docallismeonstreet
   {
     fontFile: 'docallismeonstreet.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: true,
@@ -44,7 +45,7 @@ const FONT_LIST = [
   // 08_Underground
   {
     fontFile: '08_Underground.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -52,7 +53,7 @@ const FONT_LIST = [
   // aAttackGraffiti
   {
     fontFile: 'aAttackGraffiti.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -60,7 +61,7 @@ const FONT_LIST = [
   // adrip1
   {
     fontFile: 'adrip1.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -68,7 +69,7 @@ const FONT_LIST = [
   // aaaiight
   {
     fontFile: 'aaaiight.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -76,7 +77,7 @@ const FONT_LIST = [
   // Aerosol
   {
     fontFile: 'Aerosol.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -84,7 +85,7 @@ const FONT_LIST = [
   // amsterdam
   {
     fontFile: 'amsterdam.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -92,7 +93,7 @@ const FONT_LIST = [
   // BillyBop_MAJTAAG
   {
     fontFile: 'BillyBop_MAJTAAG.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -100,7 +101,7 @@ const FONT_LIST = [
   // Bombtrack_Demo
   {
     fontFile: 'Bombtrack_Demo.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -108,7 +109,7 @@ const FONT_LIST = [
   // bopollux
   {
     fontFile: 'bopollux.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -116,7 +117,7 @@ const FONT_LIST = [
   // Califas_Demo
   {
     fontFile: 'Califas_Demo.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -124,7 +125,7 @@ const FONT_LIST = [
   // Cholo_Letters_Demo
   {
     fontFile: 'Cholo_Letters_Demo.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -132,7 +133,7 @@ const FONT_LIST = [
   // chronic
   {
     fontFile: 'chronic.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -140,7 +141,7 @@ const FONT_LIST = [
   // CORONA_COVID19
   {
     fontFile: 'CORONA_COVID19.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -148,7 +149,7 @@ const FONT_LIST = [
   // degrassi_front
   {
     fontFile: 'degrassi_front.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -156,7 +157,7 @@ const FONT_LIST = [
   // degrassi
   {
     fontFile: 'degrassi.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -164,7 +165,7 @@ const FONT_LIST = [
   // Dirty_lizard
   {
     fontFile: 'Dirty_lizard.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -172,7 +173,7 @@ const FONT_LIST = [
   // DJGROSS
   {
     fontFile: 'DJGROSS.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -180,7 +181,7 @@ const FONT_LIST = [
   // Eazy_3
   {
     fontFile: 'Eazy_3.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -188,7 +189,7 @@ const FONT_LIST = [
   // Urban_Calligraphy
   {
     fontFile: 'Urban_Calligraphy.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -196,7 +197,7 @@ const FONT_LIST = [
   // FAT&CAP
   {
     fontFile: 'FAT&CAP.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -204,7 +205,7 @@ const FONT_LIST = [
   // Felipe_Segundo
   {
     fontFile: 'Felipe_Segundo.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -212,7 +213,7 @@ const FONT_LIST = [
   // Freight_Train_Gangsta
   {
     fontFile: 'Freight_Train_Gangsta.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -220,7 +221,7 @@ const FONT_LIST = [
   // From_Street_Art
   {
     fontFile: 'From_Street_Art.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -228,7 +229,7 @@ const FONT_LIST = [
   // Ghetto_Master
   {
     fontFile: 'Ghetto_Master.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -236,7 +237,7 @@ const FONT_LIST = [
   // graffitistreet
   {
     fontFile: 'graffitistreet.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -244,7 +245,7 @@ const FONT_LIST = [
   // graffitistreet3d
   {
     fontFile: 'graffitistreet3d.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -252,7 +253,7 @@ const FONT_LIST = [
   // Graffogie
   {
     fontFile: 'Graffogie.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -260,7 +261,7 @@ const FONT_LIST = [
   // GRAFF___
   {
     fontFile: 'GRAFF___.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -268,7 +269,7 @@ const FONT_LIST = [
   // Hustlaz_Demo
   {
     fontFile: 'Hustlaz_Demo.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -276,7 +277,7 @@ const FONT_LIST = [
   // Inner_City
   {
     fontFile: 'Inner_City.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -284,7 +285,7 @@ const FONT_LIST = [
   // JungleBold
   {
     fontFile: 'JungleBold.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -292,7 +293,7 @@ const FONT_LIST = [
   // Kolossal_black
   {
     fontFile: 'Kolossal_black.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -300,7 +301,7 @@ const FONT_LIST = [
   // Losdol
   {
     fontFile: 'Losdol.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -308,7 +309,7 @@ const FONT_LIST = [
   // Loudhailer
   {
     fontFile: 'Loudhailer.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -316,7 +317,7 @@ const FONT_LIST = [
   // Mostwasted
   {
     fontFile: 'Mostwasted.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -324,7 +325,7 @@ const FONT_LIST = [
   // Mwd_Graff
   {
     fontFile: 'Mwd_Graff.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: true,
@@ -332,7 +333,7 @@ const FONT_LIST = [
   // N!CE_Tag
   {
     fontFile: 'N!CE_Tag.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -340,7 +341,7 @@ const FONT_LIST = [
   // Nightvandals
   {
     fontFile: 'Nightvandals.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -348,7 +349,7 @@ const FONT_LIST = [
   // OlSkool
   {
     fontFile: 'OlSkool.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -356,7 +357,7 @@ const FONT_LIST = [
   // Oldschool_Tag
   {
     fontFile: 'Oldschool_Tag.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -364,7 +365,7 @@ const FONT_LIST = [
   // Painterz
   {
     fontFile: 'Painterz.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -372,7 +373,7 @@ const FONT_LIST = [
   // PeaceFight
   {
     fontFile: 'PeaceFight.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -380,7 +381,7 @@ const FONT_LIST = [
   // PLAN-A-EMCEE
   {
     fontFile: 'PLAN-A-EMCEE.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -388,7 +389,7 @@ const FONT_LIST = [
   // planet_benson_2
   {
     fontFile: 'planet_benson_2.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -396,7 +397,7 @@ const FONT_LIST = [
   // Real_Toyz
   {
     fontFile: 'Real_Toyz.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -404,7 +405,7 @@ const FONT_LIST = [
   // Rhieknuza
   {
     fontFile: 'Rhieknuza.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -412,7 +413,7 @@ const FONT_LIST = [
   // RUFA
   {
     fontFile: 'RUFA.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -420,7 +421,7 @@ const FONT_LIST = [
   // RuthlessDrippin1
   {
     fontFile: 'RuthlessDrippin1.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -428,7 +429,7 @@ const FONT_LIST = [
   // RuthlessWreckin1
   {
     fontFile: 'RuthlessWreckin1.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -436,7 +437,7 @@ const FONT_LIST = [
   // Sadoc_Wild_DEMO
   {
     fontFile: 'Sadoc_Wild_DEMO.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -444,7 +445,7 @@ const FONT_LIST = [
   // SequalRegular_PERSONAL_USE
   {
     fontFile: 'SequalRegular_PERSONAL_USE.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: true,
@@ -452,7 +453,7 @@ const FONT_LIST = [
   // Shockwave
   {
     fontFile: 'Shockwave.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -460,7 +461,7 @@ const FONT_LIST = [
   // Sick_Sketchlings
   {
     fontFile: 'Sick_Sketchlings.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 0.5,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -468,7 +469,7 @@ const FONT_LIST = [
   // Skatchboard
   {
     fontFile: 'Skatchboard.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -476,7 +477,7 @@ const FONT_LIST = [
   // slammertag
   {
     fontFile: 'slammertag.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -484,7 +485,7 @@ const FONT_LIST = [
   // SOUPER3
   {
     fontFile: 'SOUPER3.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -492,7 +493,7 @@ const FONT_LIST = [
   // Squizers_Marker_Demo
   {
     fontFile: 'Squizers_Marker_Demo.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -500,7 +501,7 @@ const FONT_LIST = [
   // Streamzy
   {
     fontFile: 'Streamzy.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -508,7 +509,7 @@ const FONT_LIST = [
   // subway
   {
     fontFile: 'subway.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -516,7 +517,7 @@ const FONT_LIST = [
   // sweetasrevenge
   {
     fontFile: 'sweetasrevenge.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -524,7 +525,7 @@ const FONT_LIST = [
   // Sydney_Style
   {
     fontFile: 'Sydney_Style.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -532,7 +533,7 @@ const FONT_LIST = [
   // The_Stamshons_Demo
   {
     fontFile: 'The_Stamshons_Demo.otf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -540,7 +541,7 @@ const FONT_LIST = [
   // urban_decay
   {
     fontFile: 'urban_decay.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -548,7 +549,7 @@ const FONT_LIST = [
   // Urban_slick
   {
     fontFile: 'Urban_slick.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: false,
     avoidNumbers: false,
@@ -556,7 +557,7 @@ const FONT_LIST = [
   // UrbRapper
   {
     fontFile: 'UrbRapper.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -564,7 +565,7 @@ const FONT_LIST = [
   // WelcometoTexas
   {
     fontFile: 'WelcometoTexas.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: true,
@@ -572,7 +573,7 @@ const FONT_LIST = [
   // Whole_trains
   {
     fontFile: 'Whole_trains.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
@@ -580,7 +581,7 @@ const FONT_LIST = [
   // Y-Yo_Tags
   {
     fontFile: 'Y-Yo_Tags.ttf',
-    'stroke-width': '0px',
+    'stroke-width': '1px',
     'font-size-multiplier': 1,
     avoidSpecialChars: true,
     avoidNumbers: false,
