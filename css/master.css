@@ -100,6 +100,13 @@ body {
   height: 45%;
 }
 
+.draw-area-text {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  right: 40%;
+}
+
 /* LEAVE AT BOTTOM OF CSS FILE */
 .hidden {
   display: none;

@@ -1,15 +1,26 @@
-// TODO FIX
 import Timer from './timer.js'
 import { AudioPlayer } from './audio.js'
 //import { VideoPlayer } from './video_player'
 import { PLAYLIST, LAST_SONGS_PLAYLIST } from './playlist.js'
+import { getNextFont, NUMBER_OF_TEXT_AREA } from './font-list'
+import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
 // Firebase database const
 const DEBUG_MUTE = false // Default = false; true if you don't want the sound
 const timeBeforeLastSongs = 4 * 60 * 1000 + 52 * 1000 + 12 * 1000 // 4 Minute 52 + 12s (7s of delay + 5s of dropdown song)
 const dropTimeForLastSong = 5 * 1000 // 5 sec
 
-class Game {
+const COLORS = [
+  '#20ae94', //green cyan
+  '#f1d469', //yellow
+  '#ec6453', //red
+  '#2a4d89', //blue
+  '#673ab7', //purple
+  '#ff9800', //orange
+  '#8bc34a', //green
+]
+
+class CountDown {
   constructor() {
     this.countDownOver = false
 
@@ -19,6 +30,11 @@ class Game {
     this.resetIndexPlayList = false
 
     this.index = +localStorage.getItem('songIndex') ?? 0
+
+    // List of area element where we draw text
+    this.areaTextElt = []
+    this.indexAreaText = 0
+    this.indexColor = 0
 
     // We init the Audio player
     this.audioPlayer = new AudioPlayer()
@@ -36,6 +52,72 @@ class Game {
     //     // TODO (SHOW FINAL IMAGE)
     //   }, 5000)
     // })
+  }
+
+  /**
+   * Give the next area configuration (could create the dom node)
+   * @returns an object with configuration of textArea
+   */
+  _getNextArea() {
+    this.indexAreaText = (this.indexAreaText + 1) % NUMBER_OF_TEXT_AREA
+    this.indexColor = (this.indexColor + 1) % COLORS.length
+    if (this.indexAreaText > this.areaTextElt.length) {
+      const textElt = document.createElement('DIV')
+      textElt.classList.add('draw-area-text')
+      textElt.id = `draw-area${this.indexAreaText - 1}`
+      document.querySelector('.draw-area').appendChild(textElt)
+      this.areaTextElt.push(textElt)
+    }
+
+    // Tune position and orientation of text area
+    const index = this.indexAreaText > 0 ? this.indexAreaText - 1 : this.indexAreaText
+    const areaElt = this.areaTextElt[index]
+    const topPercent = Math.floor(Math.random() * 40) + 1
+    const leftPercent = 10 + (Math.floor(Math.random() * 40) + 1)
+    const roateDeg = (this.indexAreaText % 2 === 0 ? 1 : -1) * (Math.floor(Math.random() * 10) + 1)
+    areaElt.style.top = `${topPercent}%`
+    areaElt.style.left = `${leftPercent}%`
+    areaElt.style.transform = `rotate(${roateDeg}deg)`
+
+    return {
+      index: index,
+      elt: areaElt,
+      selector: `#draw-area${index}`,
+      color: COLORS[this.indexColor],
+    }
+  }
+
+  drawText(textToDraw) {
+    const textArea = this._getNextArea()
+    // Detect Constraints
+    // TODO
+    const fontToUse = getNextFont({
+      withSpecialChars: false,
+      withNumbers: false,
+    })
+    // TODO better sanitize (to restrictive)
+    const sanitizeText = textToDraw.toLowerCase().replace(/[^a-zA-Z ]/, '')
+    const fontInSVG = new SVGTextAnimate(
+      `./css/fonts/${fontToUse.fontFile}`,
+      {
+        duration: 600,
+        direction: 'normal',
+        'fill-mode': 'forwards',
+        delay: 150,
+        mode: 'onebyone',
+      },
+      {
+        fill: textArea.color,
+        stroke: textArea.color,
+        'stroke-width': fontToUse['stroke-width'],
+        'font-size': 130 * fontToUse['font-size-multiplier'],
+      },
+    )
+
+    //await fontInSVG.setFont()
+    fontInSVG.setFont().then((_) => {
+      fontInSVG.create(sanitizeText, textArea.selector)
+    })
   }
 
   /**
@@ -177,4 +259,4 @@ class Game {
   }
 }
 
-export default Game
+export default CountDown

@@ -1,13 +1,11 @@
-import Game from './game.js'
-import { getNextFont } from './font-list'
-import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
+import CountDown from './countdown-engine.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   // We set a special class according to mode to hide or show some elements of the page
   document.getElementById('game-canvas')
 
   // We init the engine
-  let game = new Game()
+  let countdown = new CountDown()
   let fullscreenMode = false
 
   /**
@@ -15,15 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   //initWebSocketConnexion();
 
-  setInterval(() => drawText('Hello World'), 15000)
-  drawText('Hello World')
+  setInterval(() => countdown.drawText('Hello World'), 15000)
+  countdown.drawText('Hello World')
 
   /**
    * END PROOF
    */
 
   function startScreenGame() {
-    game.startSong()
+    countdown.startSong()
     toggleFullScreen()
   }
 
@@ -64,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on('connect', () => {})
     socket.on('tweet', (json) => {
       if (json.data) {
-        drawText(json.data.text)
+        countdown.drawText(json.data.text)
         //console.log({ type: 'add_tweet', payload: json })
       }
     })
@@ -77,38 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on('authError', (data) => {
       console.log('data =>', data)
       console.log({ type: 'add_errors', payload: [data] })
-    })
-  }
-
-  function drawText(textToDraw) {
-    // Detect Constraints
-    // TODO
-    const fontToUse = getNextFont({
-      withSpecialChars: false,
-      withNumbers: false,
-    })
-    // TODO better sanitize (to restrictive)
-    const sanitizeText = textToDraw.toLowerCase().replace(/[^a-zA-Z ]/, '')
-    const fontInSVG = new SVGTextAnimate(
-      `./css/fonts/${fontToUse.fontFile}`,
-      {
-        duration: 600,
-        direction: 'normal',
-        'fill-mode': 'forwards',
-        delay: 150,
-        mode: 'onebyone',
-      },
-      {
-        fill: '#20ae94', // TODO
-        stroke: '#20ae94', // TODO
-        'stroke-width': fontToUse['stroke-width'],
-        'font-size': 100 * fontToUse['font-size-multiplier'],
-      },
-    )
-
-    //await fontInSVG.setFont()
-    fontInSVG.setFont().then((_) => {
-      fontInSVG.create(sanitizeText, '#draw-text')
     })
   }
 })
