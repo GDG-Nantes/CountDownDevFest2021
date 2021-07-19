@@ -3,30 +3,12 @@ import { getNextFont } from './font-list'
 import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-  // We check if the url contains Hash "countdown" to know if we're on countdown mode
-  const countDownMode = location.hash && location.hash === '#countdown'
   // We set a special class according to mode to hide or show some elements of the page
-  document
-    .getElementById('game-canvas')
-    .classList.add(countDownMode ? 'countdown-mode' : 'mobile-mode')
+  document.getElementById('game-canvas')
 
   // We init the engine
-  let game = new Game(countDownMode)
+  let game = new Game()
   let fullscreenMode = false
-
-  // We watch for close instructions click to start the game
-  const instructionElt = document.querySelector('.instructions')
-
-  const inputElt = document.getElementById('pseudo')
-  if (countDownMode) {
-    inputElt.setAttribute('type', 'password')
-  }
-
-  inputElt.addEventListener('keydown', (e) => {
-    if (e.keyCode === 13) {
-      startScreenGame()
-    }
-  })
 
   /**
    * PROOF
@@ -35,60 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setInterval(() => drawText('Hello World'), 15000)
   drawText('Hello World')
-  /*const textArea = document.body.querySelector('#draw-text')
-  const docalisme = new SVGTextAnimate(
-    './css/fonts/Y-Yo_Tags.ttf',
-    {
-      duration: 100,
-      direction: 'normal',
-      'fill-mode': 'forwards',
-      //delay: 150,
-      mode: 'sync', //'onebyone',
-    },
-    {
-      fill: '#20ae94',
-      stroke: '#20ae94',
-      'stroke-width': '0px',
-      'font-size': 100,
-    },
-  )
-
-  //await docalisme.setFont()
-  docalisme.setFont().then((_) => {
-    docalisme.create('abct mon 1-9 !@#', '#draw-text')
-  })*/
 
   /**
    * END PROOF
    */
 
   function startScreenGame() {
-    const input = inputElt.value
-    game.setPseudo(input)
-
-    if (!input || input.length === 0 || input.trim().length === 0) {
-      document.getElementById('error-message').style.display = ''
-      return
-    }
-
-    // we check if the pwd is correct of if the user enter a name
-    if (countDownMode) {
-      /*fetch(`https://us-central1-devfesthero.cloudfunctions.net/app/pwd?pwd=${input}`).then(res => {
-        if (res.status === 200) {
-          instructionElt.style.display = 'none'
-          game.startSong()
-          toggleFullScreen()
-        } else {
-          document.getElementById('error-pwd').style.display = ''
-        }
-      })*/
-    } else if (input && input.length > 0) {
-      instructionElt.style.display = 'none'
-      //game.startSong()
-      // We listen to change in firebase to change of song
-      game.listenToChange()
-      toggleFullScreen()
-    }
+    game.startSong()
+    toggleFullScreen()
   }
 
   function toggleFullScreen() {
