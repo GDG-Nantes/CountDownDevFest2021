@@ -2,7 +2,7 @@
 
 const lastFonts = []
 let lastFontIndex = 0
-export const NUMBER_OF_TEXT_AREA = 3
+export const NUMBER_OF_TEXT_AREA = 20
 
 function checkFontUse(font, constraints) {
   if (constraints.withSpecialChars && font.avoidSpecialChars) {
@@ -16,10 +16,10 @@ function checkFontUse(font, constraints) {
 
 export function getNextFont(constraints) {
   let chooseFont = undefined
-  let index = (Math.floor(Math.random() * FONT_LIST.length) + 1) % NUMBER_OF_TEXT_AREA
+  let index = Math.floor(Math.random() * FONT_LIST.length)
   do {
     chooseFont = FONT_LIST[index]
-    index = (Math.floor(Math.random() * FONT_LIST.length) + 1) % NUMBER_OF_TEXT_AREA
+    index = Math.floor(Math.random() * FONT_LIST.length)
   } while (!checkFontUse(chooseFont, constraints))
   lastFonts[lastFontIndex] = chooseFont
   lastFontIndex = (lastFontIndex + 1) % NUMBER_OF_TEXT_AREA

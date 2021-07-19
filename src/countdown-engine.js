@@ -59,30 +59,34 @@ class CountDown {
    * @returns an object with configuration of textArea
    */
   _getNextArea() {
-    this.indexAreaText = (this.indexAreaText + 1) % NUMBER_OF_TEXT_AREA
     this.indexColor = (this.indexColor + 1) % COLORS.length
-    if (this.indexAreaText > this.areaTextElt.length) {
+    const id = `draw-area${this.indexAreaText}`
+    if (this.areaTextElt.length === 0 || this.indexAreaText > this.areaTextElt.length - 1) {
       const textElt = document.createElement('DIV')
       textElt.classList.add('draw-area-text')
-      textElt.id = `draw-area${this.indexAreaText - 1}`
+      textElt.id = id
       document.querySelector('.draw-area').appendChild(textElt)
       this.areaTextElt.push(textElt)
     }
 
     // Tune position and orientation of text area
-    const index = this.indexAreaText > 0 ? this.indexAreaText - 1 : this.indexAreaText
-    const areaElt = this.areaTextElt[index]
+    const areaElt = this.areaTextElt[this.indexAreaText]
+    const index = this.indexAreaText
     const topPercent = Math.floor(Math.random() * 40) + 1
     const leftPercent = 10 + (Math.floor(Math.random() * 40) + 1)
     const roateDeg = (this.indexAreaText % 2 === 0 ? 1 : -1) * (Math.floor(Math.random() * 10) + 1)
     areaElt.style.top = `${topPercent}%`
     areaElt.style.left = `${leftPercent}%`
     areaElt.style.transform = `rotate(${roateDeg}deg)`
+    document.querySelector('.draw-area').removeChild(areaElt)
+    document.querySelector('.draw-area').appendChild(areaElt)
+
+    this.indexAreaText = (this.indexAreaText + 1) % NUMBER_OF_TEXT_AREA
 
     return {
       index: index,
       elt: areaElt,
-      selector: `#draw-area${index}`,
+      selector: `#${id}`,
       color: COLORS[this.indexColor],
     }
   }
