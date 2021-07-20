@@ -13,8 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   //initWebSocketConnexion();
 
-  setInterval(() => countdown.drawText('Hello World'), 15000)
-  countdown.drawText('Hello World')
+  /*setInterval(() => {
+    const list = [
+      'Sàlût, le #monde!',
+      'bienvenue en 2021',
+      "c'était mieux avant",
+      'une phrase en 5 mots',
+      '#devfestgraf, zut',
+      'zut #devfestgraf',
+      'encore 1 test',
+      'ça rocks chez @gdgnantes',
+    ]
+    countdown.drawText(list[Math.floor(Math.random() * list.length)], 'jefbinomed')
+  }, 15000)*/
+  countdown.drawText('Hello World', 'jefbinomed')
 
   /**
    * END PROOF

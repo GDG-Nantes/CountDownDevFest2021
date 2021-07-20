@@ -5,11 +5,9 @@ import { PLAYLIST, LAST_SONGS_PLAYLIST } from './playlist.js'
 import { getNextFont, NUMBER_OF_TEXT_AREA } from './font-list'
 import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
-// Firebase database const
 const DEBUG_MUTE = false // Default = false; true if you don't want the sound
 const timeBeforeLastSongs = 4 * 60 * 1000 + 52 * 1000 + 12 * 1000 // 4 Minute 52 + 12s (7s of delay + 5s of dropdown song)
 const dropTimeForLastSong = 5 * 1000 // 5 sec
-
 const COLORS = [
   '#20ae94', //green cyan
   '#f1d469', //yellow
@@ -19,7 +17,11 @@ const COLORS = [
   '#ff9800', //orange
   '#8bc34a', //green
 ]
-
+const HASHTAG = 'devfestgraf'
+// Duration for write 1 letter
+const DURATION_ONE_LETTER = 600
+// Delay between each letter draw
+const DELAY_BETWEEN_LETTERS = 150
 class CountDown {
   constructor() {
     this.countDownOver = false
@@ -56,15 +58,18 @@ class CountDown {
 
   /**
    * Give the next area configuration (could create the dom node)
+   * @param {string} text
+   * @param {string} credits
    * @returns an object with configuration of textArea
    */
-  _getNextArea() {
+  _getNextArea(text, credits) {
     this.indexColor = (this.indexColor + 1) % COLORS.length
     const id = `draw-area${this.indexAreaText}`
     if (this.areaTextElt.length === 0 || this.indexAreaText > this.areaTextElt.length - 1) {
       const textElt = document.createElement('DIV')
       textElt.classList.add('draw-area-text')
       textElt.id = id
+      textElt.dataset.credits = credits.toLocaleUpperCase()
       document.querySelector('.draw-area').appendChild(textElt)
       this.areaTextElt.push(textElt)
     }
@@ -72,12 +77,17 @@ class CountDown {
     // Tune position and orientation of text area
     const areaElt = this.areaTextElt[this.indexAreaText]
     const index = this.indexAreaText
-    const topPercent = Math.floor(Math.random() * 40) + 1
-    const leftPercent = 10 + (Math.floor(Math.random() * 40) + 1)
-    const roateDeg = (this.indexAreaText % 2 === 0 ? 1 : -1) * (Math.floor(Math.random() * 10) + 1)
+    const topPercent = Math.floor(Math.random() * 50) + 1
+    const leftPercent = 5 + (Math.floor(Math.random() * 30) + 1)
+    const rotateDeg = (this.indexAreaText % 2 === 0 ? 1 : -1) * (Math.floor(Math.random() * 10) + 1)
     areaElt.style.top = `${topPercent}%`
     areaElt.style.left = `${leftPercent}%`
-    areaElt.style.transform = `rotate(${roateDeg}deg)`
+    areaElt.style.transform = `rotate(${rotateDeg}deg)`
+    areaElt.style.color = COLORS[this.indexColor]
+    areaElt.style.setProperty(
+      '--timing',
+      `${text.length * ((2 * DURATION_ONE_LETTER + 2 * DELAY_BETWEEN_LETTERS) / 1000)}s`,
+    )
     document.querySelector('.draw-area').removeChild(areaElt)
     document.querySelector('.draw-area').appendChild(areaElt)
 
@@ -91,23 +101,42 @@ class CountDown {
     }
   }
 
-  drawText(textToDraw) {
-    const textArea = this._getNextArea()
-    // Detect Constraints
-    // TODO
-    const fontToUse = getNextFont({
-      withSpecialChars: false,
-      withNumbers: false,
-    })
-    // TODO better sanitize (to restrictive)
-    const sanitizeText = textToDraw.toLowerCase().replace(/[^a-zA-Z ]/, '')
+  /**
+   * Sanitize the input text by removing accents and specials chars
+   * @param {string} text
+   * @returns the text sanitized
+   */
+  _sanitize(text) {
+    const unAccentText = text.normalize('NFD').replace(/\p{Diacritic}/gu, '')
+    const authorizedChar = unAccentText.toLowerCase().replace(/[^a-zA-Z0-9#@!,?=' ]/, '')
+    return authorizedChar.replace(`#${HASHTAG}`, '').replace(HASHTAG, '')
+  }
+
+  /**
+   * Detect the constraints of text (use of number, use of specials chars)
+   * @param {string} text
+   * @returns the object of font constraints
+   */
+  _detectConstraints(text) {
+    const regExpNumbers = /.*[0-9].*/
+    const regExpSpecialChar = /.*[@#=!?,'].*/
+    return {
+      withSpecialChars: regExpSpecialChar.test(text),
+      withNumbers: regExpNumbers.test(text),
+    }
+  }
+
+  drawText(textToDraw, credits) {
+    const sanitizeText = this._sanitize(textToDraw)
+    const textArea = this._getNextArea(sanitizeText, credits)
+    const fontToUse = getNextFont(this._detectConstraints(sanitizeText))
     const fontInSVG = new SVGTextAnimate(
       `./css/fonts/${fontToUse.fontFile}`,
       {
-        duration: 600,
+        duration: DURATION_ONE_LETTER,
         direction: 'normal',
         'fill-mode': 'forwards',
-        delay: 150,
+        delay: DELAY_BETWEEN_LETTERS,
         mode: 'onebyone',
       },
       {
@@ -117,8 +146,6 @@ class CountDown {
         'font-size': 130 * fontToUse['font-size-multiplier'],
       },
     )
-
-    //await fontInSVG.setFont()
     fontInSVG.setFont().then((_) => {
       fontInSVG.create(sanitizeText, textArea.selector)
     })

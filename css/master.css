@@ -101,10 +101,27 @@ body {
 }
 
 .draw-area-text {
+  background-color: white;
   position: absolute;
   top: 5%;
   left: 20%;
   right: 40%;
+  width: fit-content;
+}
+
+.draw-area-text::after {
+  position: absolute;
+  font-size: 35px;
+  bottom: -85px;
+  right: 0;
+  content: '';
+  animation: showCredits var(--timing, 5s) ease 0s 1 forwards;
+}
+
+@keyframes showCredits {
+  to {
+    content: '@' attr(data-credits);
+  }
 }
 
 /* LEAVE AT BOTTOM OF CSS FILE */
