@@ -119,9 +119,11 @@ class CountDown {
    */
   _detectConstraints(text) {
     const regExpNumbers = /.*[0-9].*/
+    const regExpUppercase = /.*[A-Z].*/
     const regExpSpecialChar = /.*[@#=!?,'].*/
     return {
       withSpecialChars: regExpSpecialChar.test(text),
+      withUppercase: regExpUppercase.test(text),
       withNumbers: regExpNumbers.test(text),
     }
   }

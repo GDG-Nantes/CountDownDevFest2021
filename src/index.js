@@ -1,8 +1,12 @@
 import CountDown from './countdown-engine.js'
+import { TestFonts } from './test-fonts'
 
 document.addEventListener('DOMContentLoaded', () => {
-  // We set a special class according to mode to hide or show some elements of the page
-  document.getElementById('game-canvas')
+  // Only for tests
+  if (location.pathname === '/index-test') {
+    new TestFonts()
+    return
+  }
 
   // We init the engine
   let countdown = new CountDown()
