@@ -101,7 +101,6 @@ body {
 }
 
 .draw-area-text {
-  background-color: white;
   position: absolute;
   top: 5%;
   left: 20%;
@@ -118,10 +117,52 @@ body {
   animation: showCredits var(--timing, 5s) ease 0s 1 forwards;
 }
 
+svg {
+  overflow: inherit;
+  background-image: url(/assets/images/brush-1.svg);
+  background-repeat: no-repeat;
+  background-size: var(--width-svg) var(--height-svg);
+}
+
 @keyframes showCredits {
   to {
     content: '@' attr(data-credits);
   }
+}
+
+/*
+ TEST FONTS AREA
+*/
+
+.draw-area-test {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3.5em;
+  font-weight: bold;
+  text-align: center;
+}
+.draw-area-container {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+  border: thin solid black;
+  margin: 5px;
+  padding: 10px;
+}
+.draw-area-container .draw-area-text {
+  all: unset;
+
+  width: fit-content;
 }
 
 /* LEAVE AT BOTTOM OF CSS FILE */

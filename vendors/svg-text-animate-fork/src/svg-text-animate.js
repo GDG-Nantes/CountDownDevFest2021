@@ -181,7 +181,9 @@ export default class SVGTextAnimate {
     const svg = `<svg width="${box.x2 - box.x1 + strokeWidth}" 
             height="${box.y2 - box.y1}" 
             viewBox="${box.x1} ${box.y1} ${box.x2 + strokeWidth} ${box.y2 + strokeWidth}"
-            xmlns="http://www.w3.org/2000/svg" style="vertical-align: text-top; ">
+            xmlns="http://www.w3.org/2000/svg" style="vertical-align: text-top; --height-svg:${
+              box.y2 - box.y1
+            }px; --width-svg:${box.x2 - box.x1 + strokeWidth}px">
           <g id="svgGroup" stroke-linecap="round" stroke="#000" fill="none" style="fill:none;
             ${this.stroke.fill ? `--fill-color: ${this.stroke.fill};` : ''}
             stroke:${this.stroke.stroke};
