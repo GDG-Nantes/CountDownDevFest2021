@@ -28,6 +28,8 @@ body {
 body {
   font-family: 'Urban Brush', cursive !important;
   background: linear-gradient(var(--stop-color-1), var(--stop-color-2));
+  background-image: url(/assets/images/devfest_wall.jpeg);
+  background-size: cover;
   color: #3b3b3b;
 }
 
@@ -102,9 +104,9 @@ body {
 
 .draw-area-text {
   position: absolute;
-  top: 5%;
+  /*top: 5%;
   left: 20%;
-  right: 40%;
+  right: 40%;*/
   width: fit-content;
 }
 
@@ -118,15 +120,48 @@ body {
 }
 
 svg {
+  display: none;
   overflow: inherit;
-  background-image: url(/assets/images/brush-1.svg);
+  /*background-image: url(/assets/images/brush-1.svg);
   background-repeat: no-repeat;
-  background-size: var(--width-svg) var(--height-svg);
+  background-size: var(--width-svg) var(--height-svg);*/
+}
+
+svg.show {
+  display: block;
+}
+
+.draw-area-container {
+  width: var(--width-svg);
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.draw-area-svg-bg {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: var(--height-svg);
+  overflow: hidden;
+  animation: showBrush 1.3s ease 0s 1 forwards;
+}
+
+.draw-area-svg-bg img {
+  filter: var(--filter-svg);
 }
 
 @keyframes showCredits {
   to {
     content: '@' attr(data-credits);
+  }
+}
+
+@keyframes showBrush {
+  to {
+    width: var(--width-svg);
   }
 }
 
@@ -147,7 +182,7 @@ svg {
   font-weight: bold;
   text-align: center;
 }
-.draw-area-container {
+.draw-area-container-test {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
@@ -159,7 +194,7 @@ svg {
   margin: 5px;
   padding: 10px;
 }
-.draw-area-container .draw-area-text {
+.draw-area-container-test .draw-area-text {
   all: unset;
 
   width: fit-content;

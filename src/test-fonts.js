@@ -19,7 +19,7 @@ export class TestFonts {
 
   addText(fontToUse, color, text, credits) {
     const container = document.createElement('DIV')
-    container.classList.add('draw-area-container')
+    container.classList.add('draw-area-container-test')
     const descriptionFont = document.createElement('DIV')
     descriptionFont.classList.add('draw-area-desc')
     descriptionFont.innerHTML = `fontname: ${fontToUse.fontFile}/multiplier: ${fontToUse['font-size-multiplier']}/ avoidNumbers: ${fontToUse.avoidNumbers}/ avoidSpecialChars: ${fontToUse.avoidSpecialChars}`

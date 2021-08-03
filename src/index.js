@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   //initWebSocketConnexion();
 
-  /*setInterval(() => {
+  setInterval(() => {
     const list = [
       'Sàlût, le #monde!',
       'bienvenue en 2021',
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'ça rocks chez @gdgnantes',
     ]
     countdown.drawText(list[Math.floor(Math.random() * list.length)], 'jefbinomed')
-  }, 15000)*/
+  }, 15000)
   countdown.drawText('Hello World', 'jefbinomed')
 
   /**

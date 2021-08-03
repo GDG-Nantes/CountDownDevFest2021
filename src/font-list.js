@@ -2,7 +2,7 @@
 
 const lastFonts = []
 let lastFontIndex = 0
-export const NUMBER_OF_TEXT_AREA = 20
+export const NUMBER_OF_TEXT_AREA = 10
 
 function checkFontUse(font, constraints) {
   if (constraints.withSpecialChars && font.avoidSpecialChars) {

@@ -17,6 +17,40 @@ const COLORS = [
   '#ff9800', //orange
   '#8bc34a', //green
 ]
+const BRUSH = [
+  {
+    name: 'brush-1.svg',
+    ratio: 268 / 1001,
+  },
+  {
+    name: 'brush-stroke-banner-1.svg',
+    ratio: 954 / 1100,
+  },
+  {
+    name: 'brush-stroke-banner-5.svg',
+    ratio: 804 / 1124,
+  },
+  {
+    name: 'brush-stroke-banner-7.svg',
+    ratio: 736 / 1100,
+  },
+  {
+    name: 'brush-stroke-banner-8.svg',
+    ratio: 905 / 1100,
+  },
+  {
+    name: 'banner-2.svg',
+    ratio: 786 / 1100,
+  },
+  /*{
+    name: 'brush-2.svg',
+    ratio: 161 / 603,
+  },
+  {
+    name: 'brush-3.svg',
+    ratio: 110 / 600,
+  },*/
+]
 const HASHTAG = 'devfestgraf'
 // Duration for write 1 letter
 const DURATION_ONE_LETTER = 600
@@ -65,13 +99,26 @@ class CountDown {
   _getNextArea(text, credits) {
     this.indexColor = (this.indexColor + 1) % COLORS.length
     const id = `draw-area${this.indexAreaText}`
+
+    // We define the background brush to use
+    const brushToUse = BRUSH[Math.floor(Math.random() * BRUSH.length)]
+    // Creation if not exist of background div
     if (this.areaTextElt.length === 0 || this.indexAreaText > this.areaTextElt.length - 1) {
+      const containerElt = document.createElement('DIV')
+
+      const svgBGElt = document.createElement('div')
+      svgBGElt.classList.add('draw-area-svg-bg')
+      const svgImgBGElt = document.createElement('IMG')
+      svgImgBGElt.src = `./assets/images/${brushToUse.name}`
+      svgBGElt.appendChild(svgImgBGElt)
       const textElt = document.createElement('DIV')
       textElt.classList.add('draw-area-text')
       textElt.id = id
       textElt.dataset.credits = credits.toLocaleUpperCase()
-      document.querySelector('.draw-area').appendChild(textElt)
-      this.areaTextElt.push(textElt)
+      containerElt.appendChild(svgBGElt)
+      containerElt.appendChild(textElt)
+      document.querySelector('.draw-area').appendChild(containerElt)
+      this.areaTextElt.push(containerElt)
     }
 
     // Tune position and orientation of text area
@@ -80,14 +127,22 @@ class CountDown {
     const topPercent = Math.floor(Math.random() * 50) + 1
     const leftPercent = 5 + (Math.floor(Math.random() * 30) + 1)
     const rotateDeg = (this.indexAreaText % 2 === 0 ? 1 : -1) * (Math.floor(Math.random() * 10) + 1)
+    areaElt.classList.add('draw-area-container')
     areaElt.style.top = `${topPercent}%`
     areaElt.style.left = `${leftPercent}%`
     areaElt.style.transform = `rotate(${rotateDeg}deg)`
     areaElt.style.color = COLORS[this.indexColor]
     areaElt.style.setProperty(
       '--timing',
-      `${text.length * ((2 * DURATION_ONE_LETTER + 2 * DELAY_BETWEEN_LETTERS) / 1000)}s`,
+      `${text.length * ((3 * DURATION_ONE_LETTER + 3 * DELAY_BETWEEN_LETTERS) / 1000)}s`,
     )
+
+    // We define the alteration of svg image background
+    areaElt
+      .querySelector('.draw-area-svg-bg img')
+      .style.setProperty('--filter-svg', `invert(${Math.floor(Math.random() * 5)}%)`)
+
+    // We force the reinitialisation of area
     document.querySelector('.draw-area').removeChild(areaElt)
     document.querySelector('.draw-area').appendChild(areaElt)
 
@@ -96,6 +151,8 @@ class CountDown {
     return {
       index: index,
       elt: areaElt,
+      brush: brushToUse,
+      svgBgElt: areaElt.querySelector('.draw-area-svg-bg'),
       selector: `#${id}`,
       color: COLORS[this.indexColor],
     }
@@ -128,6 +185,11 @@ class CountDown {
     }
   }
 
+  /**
+   * Will display, sanitize a text and transform it to svg
+   * @param {string} textToDraw
+   * @param {string} credits
+   */
   drawText(textToDraw, credits) {
     const sanitizeText = this._sanitize(textToDraw)
     const textArea = this._getNextArea(sanitizeText, credits)
@@ -149,7 +211,26 @@ class CountDown {
       },
     )
     fontInSVG.setFont().then((_) => {
+      // Creation of svg based on the text
       fontInSVG.create(sanitizeText, textArea.selector)
+
+      const svgTextElt = document.querySelector(`${textArea.selector} svg`)
+      // we retreive size of svg to inject it in img
+      const widthSVG = +svgTextElt.style.getPropertyValue('--width-svg') * 1.5
+      const heightSVG = widthSVG * textArea.brush.ratio
+
+      const svgBgElt = textArea.svgBgElt
+      svgBgElt.style.setProperty('--height-svg', `${heightSVG}px`)
+      svgBgElt.style.setProperty('--width-svg', `${widthSVG}px`)
+      svgBgElt.parentElement.style.setProperty('--width-svg', `${widthSVG}px`)
+      const imgSvgBgElt = svgBgElt.querySelector('img')
+      imgSvgBgElt.width = widthSVG
+      imgSvgBgElt.height = heightSVG
+
+      setTimeout(() => {
+        // We finaly display the svg
+        svgTextElt.classList.add('show')
+      }, 600)
     })
   }
 
