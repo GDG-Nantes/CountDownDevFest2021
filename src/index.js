@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'Sàlût, le #monde!',
       'bienvenue en 2021',
       "c'était mieux avant",
-      'une phrase en 5 mots',
+      'une phrase en 5 mots voir même plus',
       '#devfestgraf, zut',
       'zut #devfestgraf',
       'encore 1 test',
@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
     countdown.drawText(list[Math.floor(Math.random() * list.length)], 'jefbinomed')
   }, 15000)
-  countdown.drawText('Hello World', 'jefbinomed')
+  //countdown.drawText('Zut', 'jefbinomed')
+  //countdown.drawText('Hello World', 'jefbinomed')
+  countdown.drawText('Un texte long avec 5 mots et plus de 26 caractères', 'jefbinomed')
 
   /**
    * END PROOF

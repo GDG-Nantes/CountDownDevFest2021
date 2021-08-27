@@ -20,36 +20,29 @@ const COLORS = [
 const BRUSH = [
   {
     name: 'brush-1.svg',
-    ratio: 268 / 1001,
+    ratioHeight: 268 / 1001,
+    ratioWidth: 1001 / 268,
   },
   {
-    name: 'brush-stroke-banner-1.svg',
-    ratio: 954 / 1100,
+    name: 'brush-stroke-banner-1-resize.svg',
+    ratioHeight: 366 / 1001,
+    ratioWidth: 1001 / 366,
   },
   {
-    name: 'brush-stroke-banner-5.svg',
-    ratio: 804 / 1124,
+    name: 'brush-stroke-banner-5-resize.svg',
+    ratioHeight: 305 / 1024,
+    ratioWidth: 1024 / 305,
   },
   {
-    name: 'brush-stroke-banner-7.svg',
-    ratio: 736 / 1100,
+    name: 'brush-stroke-banner-7-resize.svg',
+    ratioHeight: 237 / 1000,
+    ratioWidth: 1000 / 237,
   },
   {
-    name: 'brush-stroke-banner-8.svg',
-    ratio: 905 / 1100,
+    name: 'banner-2-resize.svg',
+    ratioHeight: 187 / 1001,
+    ratioWidth: 1001 / 187,
   },
-  {
-    name: 'banner-2.svg',
-    ratio: 786 / 1100,
-  },
-  /*{
-    name: 'brush-2.svg',
-    ratio: 161 / 603,
-  },
-  {
-    name: 'brush-3.svg',
-    ratio: 110 / 600,
-  },*/
 ]
 const HASHTAG = 'devfestgraf'
 // Duration for write 1 letter
@@ -166,7 +159,8 @@ class CountDown {
   _sanitize(text) {
     const unAccentText = text.normalize('NFD').replace(/\p{Diacritic}/gu, '')
     const authorizedChar = unAccentText.toLowerCase().replace(/[^a-zA-Z0-9#@!,?=' ]/, '')
-    return authorizedChar.replace(`#${HASHTAG}`, '').replace(HASHTAG, '')
+    const withoutHash = authorizedChar.replace(`#${HASHTAG}`, '').replace(HASHTAG, '')
+    return withoutHash.length > 25 ? `${withoutHash.slice(0, 25)}...` : withoutHash
   }
 
   /**
@@ -177,7 +171,7 @@ class CountDown {
   _detectConstraints(text) {
     const regExpNumbers = /.*[0-9].*/
     const regExpUppercase = /.*[A-Z].*/
-    const regExpSpecialChar = /.*[@#=!?,'].*/
+    const regExpSpecialChar = /.*[\.@#=!?,'].*/
     return {
       withSpecialChars: regExpSpecialChar.test(text),
       withUppercase: regExpUppercase.test(text),
@@ -207,7 +201,7 @@ class CountDown {
         fill: textArea.color,
         stroke: textArea.color,
         'stroke-width': fontToUse['stroke-width'],
-        'font-size': 130 * fontToUse['font-size-multiplier'],
+        'font-size': 100 * fontToUse['font-size-multiplier'],
       },
     )
     fontInSVG.setFont().then((_) => {
@@ -216,8 +210,15 @@ class CountDown {
 
       const svgTextElt = document.querySelector(`${textArea.selector} svg`)
       // we retreive size of svg to inject it in img
-      const widthSVG = +svgTextElt.style.getPropertyValue('--width-svg') * 1.5
-      const heightSVG = widthSVG * textArea.brush.ratio
+      const widthFromSVG = +svgTextElt.style.getPropertyValue('--width-svg')
+      const heightFromSVG = +svgTextElt.style.getPropertyValue('--height-svg')
+      let widthSVG = widthFromSVG * 1.2
+      let heightSVG = widthSVG * textArea.brush.ratioHeight
+
+      if (heightSVG < heightFromSVG * 1.2) {
+        heightSVG = heightFromSVG * 1.2
+        widthSVG = heightSVG * textArea.brush.ratioWidth
+      }
 
       const svgBgElt = textArea.svgBgElt
       svgBgElt.style.setProperty('--height-svg', `${heightSVG}px`)

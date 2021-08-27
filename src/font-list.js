@@ -34,7 +34,7 @@ export const FONT_LIST = [
   {
     fontFile: 'SlimWandals_PERSONAL.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: true,
@@ -52,7 +52,7 @@ export const FONT_LIST = [
   {
     fontFile: '08_Underground.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -61,7 +61,7 @@ export const FONT_LIST = [
   {
     fontFile: 'aAttackGraffiti.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -70,7 +70,7 @@ export const FONT_LIST = [
   {
     fontFile: 'adrip1.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.1,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -79,7 +79,7 @@ export const FONT_LIST = [
   {
     fontFile: 'aaaiight.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -88,7 +88,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Aerosol.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -97,7 +97,7 @@ export const FONT_LIST = [
   {
     fontFile: 'amsterdam.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.1,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -106,7 +106,7 @@ export const FONT_LIST = [
   {
     fontFile: 'BillyBop_MAJTAAG.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -115,7 +115,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Bombtrack_Demo.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -124,7 +124,7 @@ export const FONT_LIST = [
   {
     fontFile: 'bopollux.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -133,7 +133,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Califas_Demo.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.65,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -142,7 +142,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Cholo_Letters_Demo.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -151,7 +151,7 @@ export const FONT_LIST = [
   {
     fontFile: 'chronic.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -160,7 +160,7 @@ export const FONT_LIST = [
   {
     fontFile: 'CORONA_COVID19.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.1,
     avoidSpecialChars: true,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -169,7 +169,7 @@ export const FONT_LIST = [
   {
     fontFile: 'degrassi_front.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -178,7 +178,7 @@ export const FONT_LIST = [
   {
     fontFile: 'degrassi.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -187,7 +187,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Dirty_lizard.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -196,7 +196,7 @@ export const FONT_LIST = [
   {
     fontFile: 'DJGROSS.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.65,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -214,7 +214,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Urban_Calligraphy.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.1,
     avoidSpecialChars: true,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -232,7 +232,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Felipe_Segundo.otf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -241,7 +241,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Freight_Train_Gangsta.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -259,7 +259,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Ghetto_Master.otf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -268,7 +268,7 @@ export const FONT_LIST = [
   {
     fontFile: 'graffitistreet.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -277,7 +277,7 @@ export const FONT_LIST = [
   {
     fontFile: 'graffitistreet3d.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -286,7 +286,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Graffogie.otf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.1,
     avoidSpecialChars: true,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -295,7 +295,7 @@ export const FONT_LIST = [
   {
     fontFile: 'GRAFF___.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -304,7 +304,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Hustlaz_Demo.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -313,7 +313,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Inner_City.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.6,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -322,7 +322,7 @@ export const FONT_LIST = [
   {
     fontFile: 'JungleBold.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -331,7 +331,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Kolossal_black.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.65,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -340,7 +340,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Losdol.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.1,
     avoidSpecialChars: true,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -367,7 +367,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Mwd_Graff.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -376,7 +376,7 @@ export const FONT_LIST = [
   {
     fontFile: 'N!CE_Tag.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.5,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -385,7 +385,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Nightvandals.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -394,7 +394,7 @@ export const FONT_LIST = [
   {
     fontFile: 'OlSkool.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -403,7 +403,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Oldschool_Tag.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -421,7 +421,7 @@ export const FONT_LIST = [
   {
     fontFile: 'PeaceFight.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -439,7 +439,7 @@ export const FONT_LIST = [
   {
     fontFile: 'planet_benson_2.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -448,7 +448,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Real_Toyz.otf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.45,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -466,7 +466,7 @@ export const FONT_LIST = [
   {
     fontFile: 'RUFA.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: true,
@@ -502,7 +502,7 @@ export const FONT_LIST = [
   {
     fontFile: 'SequalRegular_PERSONAL_USE.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: true,
@@ -520,7 +520,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Sick_Sketchlings.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 0.5,
+    'font-size-multiplier': 0.45,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -538,7 +538,7 @@ export const FONT_LIST = [
   {
     fontFile: 'slammertag.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -547,7 +547,7 @@ export const FONT_LIST = [
   {
     fontFile: 'SOUPER3.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.7,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -556,7 +556,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Squizers_Marker_Demo.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.2,
     avoidSpecialChars: false,
     avoidUppercase: false,
     avoidNumbers: false,
@@ -565,7 +565,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Streamzy.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 1.1,
     avoidSpecialChars: false,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -574,7 +574,7 @@ export const FONT_LIST = [
   {
     fontFile: 'subway.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -592,7 +592,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Sydney_Style.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,
@@ -628,7 +628,7 @@ export const FONT_LIST = [
   {
     fontFile: 'UrbRapper.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.9,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: true,
@@ -646,7 +646,7 @@ export const FONT_LIST = [
   {
     fontFile: 'Whole_trains.ttf',
     'stroke-width': '1px',
-    'font-size-multiplier': 1,
+    'font-size-multiplier': 0.8,
     avoidSpecialChars: true,
     avoidUppercase: true,
     avoidNumbers: false,

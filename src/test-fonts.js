@@ -11,9 +11,10 @@ export class TestFonts {
     const text = `Hello #@!,?=' 09`
     const color = '#ec6453'
     for (let font of FONT_LIST) {
-      this.addText(font, color, text, 'jef')
-      this.addText(font, color, 'hello', 'jef')
-      this.addText(font, color, 'Hello', 'jef')
+      //this.addText(font, color, text, 'jef')
+      this.addText(font, color, 'abcdefghihjklmonpqrstuvwxy...', 'jef')
+      //this.addText(font, color, 'hello', 'jef')
+      //this.addText(font, color, 'Hello', 'jef')
     }
   }
 
@@ -45,7 +46,7 @@ export class TestFonts {
         fill: color,
         stroke: color,
         'stroke-width': fontToUse['stroke-width'],
-        'font-size': 130 * fontToUse['font-size-multiplier'],
+        'font-size': 100 * fontToUse['font-size-multiplier'],
       },
     )
     fontInSVG.setFont().then((_) => {
