@@ -46,8 +46,8 @@ export class AudioPlayer {
    ******************************
    */
 
-  loadSong(songPath, song) {
-    return this._loadSound(`${songPath}/${song.song}`)
+  loadSong(path, song) {
+    return this._loadSound(`${path}${song}`)
   }
 
   play(mute, callbackEndMusic) {

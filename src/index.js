@@ -8,39 +8,45 @@ document.addEventListener('DOMContentLoaded', () => {
     return
   }
 
-  // We init the engine
-  let countdown = new CountDown()
-  let fullscreenMode = false
-
-  /**
-   * PROOF
-   */
-  //initWebSocketConnexion();
-
-  setInterval(() => {
-    const list = [
-      'Sàlût, le #monde!',
-      'bienvenue en 2021',
-      "c'était mieux avant",
-      'une phrase en 5 mots voir même plus',
-      '#devfestgraf, zut',
-      'zut #devfestgraf',
-      'encore 1 test',
-      'ça rocks chez @gdgnantes',
-    ]
-    countdown.drawText(list[Math.floor(Math.random() * list.length)], 'jefbinomed')
-  }, 15000)
-  //countdown.drawText('Zut', 'jefbinomed')
-  //countdown.drawText('Hello World', 'jefbinomed')
-  countdown.drawText('Un texte long avec 5 mots et plus de 26 caractères', 'jefbinomed')
-
-  /**
-   * END PROOF
-   */
+  document.querySelector('#start-button').addEventListener('click', (_) => startScreenGame())
 
   function startScreenGame() {
+    // We init the engine
+    let countdown = new CountDown()
+    let fullscreenMode = false
+
+    // Display elements
+    document.querySelector('#start-button').style.display = 'none'
+    document.querySelector('#game-canvas').style.display = 'block'
+
     countdown.startSong()
-    toggleFullScreen()
+    //toggleFullScreen()
+
+    /**
+     * PROOF
+     */
+    //initWebSocketConnexion();
+
+    setInterval(() => {
+      const list = [
+        'Sàlût, le #monde!',
+        'bienvenue en 2021',
+        "c'était mieux avant",
+        'une phrase en 5 mots voir même plus',
+        '#devfestgraf, zut',
+        'zut #devfestgraf',
+        'encore 1 test',
+        'ça rocks chez @gdgnantes',
+      ]
+      countdown.drawText(list[Math.floor(Math.random() * list.length)], 'jefbinomed')
+    }, 15000)
+    //countdown.drawText('Zut', 'jefbinomed')
+    //countdown.drawText('Hello World', 'jefbinomed')
+    countdown.drawText('Un texte long avec 5 mots et plus de 26 caractères', 'jefbinomed')
+
+    /**
+     * END PROOF
+     */
   }
 
   function toggleFullScreen() {

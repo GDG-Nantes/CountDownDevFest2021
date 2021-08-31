@@ -58,7 +58,7 @@ class CountDown {
     // Flag to now if we have to reset the index of playlist
     this.resetIndexPlayList = false
 
-    this.index = +localStorage.getItem('songIndex') ?? 0
+    this.songIndex = +localStorage.getItem('songIndex') ?? 0
 
     // List of area element where we draw text
     this.areaTextElt = []
@@ -300,11 +300,11 @@ class CountDown {
       // If we're in the delay to play the last song, we switch to last song playlist
       const playlistToUse = this.switchToLastsSongs ? LAST_SONGS_PLAYLIST : PLAYLIST
       // we check if we have to take the next song
-      const index = (this.index + 1) % playlistToUse.length
-      localStorage['songIndex'] = index
+      this.songIndex = (this.songIndex + 1) % playlistToUse.length
+      localStorage['songIndex'] = this.songIndex
       resolve({
-        songToPlay: playlistToUse[index],
-        index: index,
+        songToPlay: playlistToUse[this.songIndex],
+        index: this.songIndex,
       })
     })
   }
@@ -326,7 +326,7 @@ class CountDown {
   loadMusic(objectSong) {
     // We only play music if we have the countdown
     return this.audioPlayer
-      .loadSong(`./assets/songs/${objectSong.songToPlay.path}`, objectSong.songToPlay.song)
+      .loadSong(`./assets/songs/`, objectSong.songToPlay.song)
       .then((_) => objectSong)
   }
 

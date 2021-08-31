@@ -2,348 +2,123 @@
 
 export const PLAYLIST = [
   {
-    // Morceau assez sympa et pas trop dur
-    path: `Sunday_Bloody_Sunday`,
-    name: 'U2 - Sunday Bloody Sunday',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
+    name: 'Leela James - Music',
+    song: 'leela-james-music-video.mp3',
   },
   {
-    // Mythique et pas compliqué
-    path: `3.5_Paint_It,_Black_–_The_Rolling_Stones`,
-    name: 'The Rolling Stones - Paint It, Black',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'The beatnuts - Watch out now',
+    song: 'the-beatnuts-watch-out-now-a-musical-massacre.mp3',
   },
   {
-    // Sympa et un tout petit dur mais mythique
-    path: `blackbetty`,
-    name: 'Ram Jam - Blackbetty',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'The Fatback Band - Do the bus stop/suga',
+    song: 'are-you-ready-do-the-bus-stop-suga.mp3',
   },
   {
-    // Simple et efficace
-    path: `iloverockandroll`,
-    name: 'Joan Jett - I Love Rock And Roll',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Cypress Hill - Insane in the brain',
+    song: 'cypress-hill-insane-in-the-brain.mp3',
   },
   {
-    // Sympa rapide mais sympa
-    path: `7.4_Knights_of_Cydonia_-_ Muse`,
-    name: 'Muse - Knights of Cydonia',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'RJD2 - Ghostwriter',
+    song: 'rjd2-ghostwriter.mp3',
   },
   {
-    // Simple et sympa
-    path: `takemeout`,
-    name: 'Franz Ferdinand - Take me out',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Ugly Duckling - A little samba',
+    song: 'ugly-duckling-a-little-samba.mp3',
   },
   {
-    // Mythique & efficace, un peu dur mais ça passe
-    path: `5.4_La_Grange_–_ZZ_Top`,
-    name: 'ZZ Top - La Grange',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'IAM - Je danse le mia',
+    song: 'je-danse-le-mia.mp3',
   },
   {
-    // Beaucoup de notes et pas toujours évident mais reste sympa :)
-    path: `Evanescence_-_Bring_me_to_life`,
-    name: 'Evanescence - Bring me to life',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Lizzo - Boys',
+    song: 'boys.mp3',
   },
   {
-    // Mythique et pas compliqué
-    path: `Guns__N_Roses_-_Sweet_Child__O_Mine`,
-    name: "Guns 'N Roses - Sweet Child 'O Mine",
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Icecube - Check yo self',
+    song: 'icecube-check-yo-self.mp3',
   },
   {
-    // Efficace et pas trop dur
-    path: `queen_-_bohemian`,
-    name: 'Queen - Bohemian Rapsody',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Jungle, Bas - Romeo',
+    song: 'jungle-romeo-ft-bas-official-video.mp3',
   },
   {
-    // Début hyper long mais ça claque (synchro bonne ici, morceau un peu dur, et surtout très long)
-    path: `Dire_Straits_-_Money_for_Nothing`,
-    name: 'Dire staits - Money for nothing',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
+    name: 'Beat Assailant - Rain or shine',
+    song: 'rain-or-shine.mp3',
   },
   {
-    // Pas trop dur et morceau assez connu
-    path: `2.5_Bulls_on_Parade_–_Rage_Against_the_Machine`,
-    name: 'Rage Against the Machine - Bulls on Parade',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Chali 2na, Krafty kuts - Waste no time',
+    song: 'waste-no-time.mp3',
   },
   {
-    // Morceau sympa
-    path: `5.5_Welcome_to_the_Jungle_–_Guns N_ Roses`,
-    name: 'Guns N Roses - Welcome to the jungle',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Wax Tailor - Say yes',
+    song: 'wax-tailor-say-yes-feat-a-state-of-mind-asm.mp3',
   },
   {
-    // Morceau sympa avec plein de notes et pas trop compliqué
-    path: `4.5_Even_Flow_-_Pearl_Jam`,
-    name: 'Pearl Jam - Even Flow',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Al Hudson - You can do it',
+    song: 'you-can-do-it.mp3',
   },
   {
-    // Pas trop dur mais beaucoup de notes
-    path: `4.1_Paranoid_–_Black_Sabbath`,
-    name: 'Black Sabbath - Paranoid',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Jurassic 5 - Thin line',
+    song: 'jurassic-5-thin-line-ft-nelly-furtado.mp3',
   },
   {
-    // Très rapide mais pas forcément difficile
-    path: `messageinabottle`,
-    name: 'The Police - Message in a bottle',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'La fine équipe - We still here',
+    song: 'we-still-here-feat-astrid-engberg.mp3',
   },
   {
-    // efficace et pas trop dur à suivre
-    path: `killinginthenameof`,
-    name: 'Rage against the machine - Killing in the name of',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Raphael Saadiq - Get involved',
+    song: 'get-involved.mp3',
   },
   {
-    // Sympa, facile mais peu être un peu trop calme ?
-    path: `killerqueen`,
-    name: 'Queen - Killer Queen',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'C2C - Who are you',
+    song: 'c2c-who-are-you-feat-olivier-daysoul.mp3',
   },
   {
-    // Beaucoup de blanc entre les refrains (y a pas de notes :'( )
-    path: `smellsliketeen`,
-    name: 'Nirvana - Smells like teen Spirit',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'The pharcyde - Runnin',
+    song: 'runnin.mp3',
   },
   {
-    // Un peu mou
-    path: `Soundgarden_-_Black_Hole_Sun`,
-    name: 'Soundgarden - Black Hole Sun (Live)',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Handsome boy modeling school - The truth',
+    song: 'handsome-boy-modeling-school-the-truth.mp3',
   },
 
   {
-    // Hyper répétitif (toujours des doubles notes)
-    path: `Blink-182_-_All_the_Small_Things`,
-    name: 'Blink 182 - All the small things',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Carl Carton - Shes a bad mama jama',
+    song: 'shes-a-bad-mama-jama-shes-built-shes-stacked.mp3',
   },
   {
-    // Dur car énormément de notes très rapprochées...
-    path: `aroundtheworld`,
-    name: 'Red Hor Chilli Peppers - Around the world',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
+    name: 'Delinquent habits - Tres delincuentes',
+    song: 'delinquent-habits-tres-delincuentes.mp3',
   },
   {
-    // Pas évident en terme d'enchainemtn de notes
-    path: `Aerosmith_-_Dream_On`,
-    name: 'Aerosmith - Dream On',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'The chemical brothers - Galvanize',
+    song: 'the-chemical-brothers-galvanize-hd-sound.mp3',
   },
   {
-    // Facile à jouer et efficace
-    path: `The_Clash_-_Should_I_Stay_or_Should_I_Go`,
-    name: 'The Clash - Should I Stay or Should I Go (Live)',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'Eddie Kendriks - Goin up in smoke',
+    song: 'goin-up-in-smoke.mp3',
   },
   {
-    // Mythique mais pas évident (rapide et technique)
-    path: `sweethomealabama`,
-    name: 'Lynyrd Skynyrd - Sweet home alabama',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
+    name: 'The allergies - Main event',
+    song: 'the-allergies-main-event-feat-andy-cooper.mp3',
   },
   {
-    // Un peu vide en notes...
-    path: `A_Kind_Of_Magic`,
-    name: 'Queen - A Kind Of Magic',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'Song.ogg',
-      guitar: 'Guitar.ogg',
-    },
+    name: 'Sam and Dave - Hold on im coming',
+    song: 'sam-and-dave-hold-on-im-coming.mp3',
   },
   {
-    // Choix des notes bizarre par rapport au morceau
-    path: `giveitaway`,
-    name: 'Red Hor Chilli Peppers - Give it away',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
+    name: 'Dr Dree, Eminem, Xzibit - Whats the difference',
+    song: 'whats-the-difference.mp3',
   },
   {
-    // Son bof !
-    path: `starlight`,
-    name: 'Muse - Starlight',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
-  },
-  {
-    // Un peu mou
-    path: `U2_-_One`,
-    name: 'U2 - One',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
-  },
-  {
-    // Toujours sympa comme morceau et il est simple
-    path: `wearethechampions`,
-    name: 'Queen - We are the champions',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
-  },
-  {
-    // Pas intéressant comme morceau
-    path: `wewillrockyou`,
-    name: 'Queen - We will rock you',
-    difficulty: 'AMAZING_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
-  },
-  {
-    // Morceau moins connu et pas évident en terme de difficulté
-    path: `2._Evanescense_-_Sweet_Scent`,
-    name: 'Evanescense - Sweet Scent',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
-  },
-  {
-    // Sympa mais trop pop
-    path: `mich_-_beat`,
-    name: 'Michael Jackson - Beat it',
-    difficulty: 'MEDIUM_DIFFICULTY',
-    song: {
-      song: 'song.ogg',
-      guitar: 'guitar.ogg',
-    },
-  },
-  {
-    // Electro, pas trop rock et trop facile dans cette difficulté
-    path: `Aerodynamic`,
-    name: 'Daft Punk - Aerodynamic',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'Song.ogg',
-      guitar: 'Guitar.ogg',
-    },
+    name: 'Ms Dynamite - Dy-Na-Mi-Tee',
+    song: 'msdynamite-dy-na-mi-tee-hq.mp3',
   },
 ]
 
 export const LAST_SONGS_PLAYLIST = [
   {
-    path: `ACDC_-_Thunderstruck`,
     name: 'ACDC - Thunderstruck',
-    difficulty: 'EASY_DIFFICULTY',
-    song: {
-      song: 'guitar.ogg',
-    },
+    song: '2018_acdc-thunderstruck-official-video.mp3',
   },
 ]
