@@ -19,30 +19,35 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#start-button').style.display = 'none'
     document.querySelector('#game-canvas').style.display = 'block'
 
+    const listWords = []
+
     countdown.startSong()
     //toggleFullScreen()
 
     /**
      * PROOF
      */
-    //initWebSocketConnexion();
+    initWebSocketConnexion(listWords)
 
+    /*listWords.push([
+      { text: 'Sàlût, le #monde!', author: 'jefbinomed' },
+      { text: 'bienvenue en 2021', author: 'jefbinomed' },
+      { text: "c'était mieux avant", author: 'jefbinomed' },
+      { text: 'une phrase en 5 mots voir même plus', author: 'jefbinomed' },
+      { text: '#devfestgraf, zut', author: 'jefbinomed' },
+      { text: 'zut #devfestgraf', author: 'jefbinomed' },
+      { text: 'encore 1 test', author: 'jefbinomed' },
+      { text: 'ça rocks chez @gdgnantes', author: 'jefbinomed' },
+    ])*/
     setInterval(() => {
-      const list = [
-        'Sàlût, le #monde!',
-        'bienvenue en 2021',
-        "c'était mieux avant",
-        'une phrase en 5 mots voir même plus',
-        '#devfestgraf, zut',
-        'zut #devfestgraf',
-        'encore 1 test',
-        'ça rocks chez @gdgnantes',
-      ]
-      countdown.drawText(list[Math.floor(Math.random() * list.length)], 'jefbinomed')
+      if (listWords.length > 0) {
+        const tweet = listWords.shift()
+        countdown.drawText(tweet.text, tweet.author)
+      }
     }, 15000)
     //countdown.drawText('Zut', 'jefbinomed')
     //countdown.drawText('Hello World', 'jefbinomed')
-    countdown.drawText('Un texte long avec 5 mots et plus de 26 caractères', 'jefbinomed')
+    //countdown.drawText('Un texte long avec 5 mots et plus de 26 caractères', 'jefbinomed')
 
     /**
      * END PROOF
@@ -81,13 +86,29 @@ document.addEventListener('DOMContentLoaded', () => {
     fullscreenMode = !fullscreenMode
   }
 
-  function initWebSocketConnexion() {
+  function initWebSocketConnexion(listWords) {
     const socket = io('ws://localhost:3001')
-    socket.on('connect', () => {})
+    socket.on('connect', () => {
+      console.log('connected to ws')
+    })
     socket.on('tweet', (json) => {
-      if (json.data) {
-        countdown.drawText(json.data.text)
-        //console.log({ type: 'add_tweet', payload: json })
+      try {
+        if (json.data) {
+          const text = json.data.text
+          if (json.includes?.users) {
+            for (let user of json.includes.users) {
+              if (user.username !== 'DevfestGraffiti') {
+                const text = json.data.text.substr(6 + user.username.length) // We remove 'RT @username: ' to keep the original tweet
+                listWords.push({ text, author: user.username })
+                return
+              }
+            }
+          }
+          //countdown.drawText(json.data.text)
+          //console.log({ type: 'add_tweet', payload: json })
+        }
+      } catch (e) {
+        console.error(e)
       }
     })
     socket.on('heartbeat', (data) => {
