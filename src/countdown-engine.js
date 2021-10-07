@@ -1,12 +1,13 @@
 import Timer from './timer.js'
 import { AudioPlayer } from './audio.js'
-//import { VideoPlayer } from './video_player'
+import { VideoPlayer } from './video_player'
 import { PLAYLIST, LAST_SONGS_PLAYLIST } from './playlist.js'
 import { getNextFont, NUMBER_OF_TEXT_AREA } from './font-list'
 import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
-const DEBUG_MUTE = false // Default = false; true if you don't want the sound
-const timeBeforeLastSongs = 4 * 60 * 1000 + 52 * 1000 + 12 * 1000 // 4 Minute 52 + 12s (7s of delay + 5s of dropdown song)
+const DEBUG_MUTE = true // Default = false; true if you don't want the sound
+const timeBeforeLastSongs = 4 * 60 * 1000 + 8 * 1000 + 12 * 1000 // 4 Minute 08 + 12s (7s of delay + 5s of dropdown song) // MOP
+//const timeBeforeLastSongs = 4 * 60 * 1000 + 52 * 1000 + 12 * 1000 // 4 Minute 52 + 12s (7s of delay + 5s of dropdown song) // ACDC
 const dropTimeForLastSong = 5 * 1000 // 5 sec
 const COLORS = [
   '#20ae94', //green cyan
@@ -75,12 +76,12 @@ class CountDown {
     // the html element that will be blank when we start the video
     const opacityElt = document.getElementById('opacity')
     // We init the video player
-    // this.videoPlayer = new VideoPlayer(opacityElt, () => {
-    //   // console.debug('end');
-    //   setTimeout(() => {
-    //     // TODO (SHOW FINAL IMAGE)
-    //   }, 5000)
-    // })
+    this.videoPlayer = new VideoPlayer(opacityElt, () => {
+      // console.debug('end');
+      setTimeout(() => {
+        // TODO (SHOW FINAL IMAGE)
+      }, 5000)
+    })
   }
 
   /**
@@ -362,12 +363,12 @@ class CountDown {
         this.countDownOver = true
         // Stop Music
         this.audioPlayer.stop()
-        // this.videoPlayer.resetVideo()
+        this.videoPlayer.resetVideo()
         const opacityElt = document.getElementById('opacity')
         opacityElt.style.display = ''
         setTimeout(() => {
           opacityElt.classList.add('black')
-          //setTimeout(() => this.videoPlayer.playVideo(), 4000)
+          setTimeout(() => this.videoPlayer.playVideo(), 4000)
         }, 100)
         break
     }

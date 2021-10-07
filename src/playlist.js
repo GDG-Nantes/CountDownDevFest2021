@@ -117,8 +117,12 @@ export const PLAYLIST = [
 ]
 
 export const LAST_SONGS_PLAYLIST = [
-  {
+  /*{
     name: 'ACDC - Thunderstruck',
     song: '2018_acdc-thunderstruck-official-video.mp3',
+  },*/
+  {
+    name: 'M.O.P. - Ante Up',
+    song: 'mop-ante-up-remix-ft-busta-rhymes-tephlon-and-remy-martin.mp3',
   },
 ]
