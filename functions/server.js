@@ -227,7 +227,7 @@ io.on('connection', async (socket) => {
   try {
     const token = BEARER_TOKEN
     io.emit('connect', 'Client connected')
-    const stream = streamTweets(io, token)
+    const stream = streamTweets(socket, token)
   } catch (e) {
     io.emit('authError', authMessage)
   }
