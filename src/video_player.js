@@ -8,7 +8,7 @@ export class VideoPlayer {
   constructor(parentElt, callBackEnd) {
     this.videoElt = document.createElement('video')
     parentElt.appendChild(this.videoElt)
-    this.videoName = 'Motion_Devfest_V2.mp4'
+    this.videoName = 'MotionDEVFEST2021_FinalHQ.mp4'
     this.callBackEnd = callBackEnd
     // Hack to force to download the video
     this.videoElt.muted = true
