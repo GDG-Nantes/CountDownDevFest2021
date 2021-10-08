@@ -6,8 +6,8 @@ import { getNextFont, NUMBER_OF_TEXT_AREA } from './font-list'
 import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
 const DEBUG_MUTE = true // Default = false; true if you don't want the sound
-const timeBeforeLastSongs = 4 * 60 * 1000 + 8 * 1000 + 12 * 1000 // 4 Minute 08 + 12s (7s of delay + 5s of dropdown song) // MOP
-//const timeBeforeLastSongs = 4 * 60 * 1000 + 52 * 1000 + 12 * 1000 // 4 Minute 52 + 12s (7s of delay + 5s of dropdown song) // ACDC
+//const timeBeforeLastSongs = 4 * 60 * 1000 + 8 * 1000 + 5 * 1000 // 4 Minute 08 + 5s of dropdown song // MOP
+const timeBeforeLastSongs = 4 * 60 * 1000 + 52 * 1000 + 5 * 1000 // 4 Minute 52 + 5s of dropdown song // ACDC
 const dropTimeForLastSong = 5 * 1000 // 5 sec
 const COLORS = [
   '#20ae94', //green cyan
