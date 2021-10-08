@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 15000)
     //countdown.drawText('Zut', 'jefbinomed')
     //countdown.drawText('Hello World', 'jefbinomed')
-    //countdown.drawText('Un texte long avec 5 mots et plus de 26 caractères', 'jefbinomed')
+    countdown.drawText('Un texte long avec 5 mots et plus de 26 caractères', 'jefbinomed')
 
     /**
      * END PROOF

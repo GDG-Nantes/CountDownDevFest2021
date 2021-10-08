@@ -35,6 +35,10 @@ body {
   color: #3b3b3b;
 }
 
+body.test {
+  overflow: scroll;
+}
+
 #start-button {
   position: absolute;
   width: 250px;
@@ -97,7 +101,8 @@ body {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: 80px;
+  bottom: 25px;
+  margin-left: 130px;
 }
 
 .join {
@@ -136,6 +141,10 @@ body {
   content: '';
   animation: showCredits var(--timing, 5s) ease 0s 1 forwards;
 }
+.draw-area-container-test .draw-area-text::after {
+  content: '@' attr(data-credits);
+  animation: initial;
+}
 
 svg {
   display: none;
@@ -165,6 +174,10 @@ svg.show {
   height: var(--height-svg);
   overflow: hidden;
   animation: showBrush 1.3s ease 0s 1 forwards;
+}
+.draw-area-container-test .draw-area-svg-bg {
+  width: var(--width-svg);
+  animation: initial;
 }
 
 .draw-area-svg-bg img {
@@ -204,8 +217,9 @@ svg.show {
 }
 .draw-area-container-test {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
