@@ -6,26 +6,36 @@ const BRUSH = [
     name: 'brush-1.svg',
     ratioHeight: 268 / 1001,
     ratioWidth: 1001 / 268,
+    heightAddition: 100,
+    class: 'brush1',
   },
   {
     name: 'brush-stroke-banner-1-resize.svg',
     ratioHeight: 366 / 1001,
     ratioWidth: 1001 / 366,
+    heightAddition: 200,
+    class: 'brush2',
   },
   {
     name: 'brush-stroke-banner-5-resize.svg',
     ratioHeight: 305 / 1024,
     ratioWidth: 1024 / 305,
+    heightAddition: 150,
+    class: 'brush3',
   },
   {
     name: 'brush-stroke-banner-7-resize.svg',
     ratioHeight: 237 / 1000,
     ratioWidth: 1000 / 237,
+    heightAddition: 100,
+    class: 'brush4',
   },
   {
     name: 'banner-2-resize.svg',
     ratioHeight: 187 / 1001,
     ratioWidth: 1001 / 187,
+    heightAddition: 100,
+    class: 'brush5',
   },
 ]
 export class TestFonts {
@@ -74,6 +84,7 @@ export class TestFonts {
 
     const textElt = document.createElement('DIV')
     textElt.classList.add('draw-area-text')
+    textElt.classList.add(brush.class)
     textElt.id = `draw-area${this.index}`
     this.index++
     textElt.dataset.credits = credits.toLocaleUpperCase()
@@ -103,7 +114,8 @@ export class TestFonts {
       const svgTextElt = document.querySelector(`#${textElt.id} svg`)
       // we retreive size of svg to inject it in img
       const widthFromSVG = +svgTextElt.style.getPropertyValue('--width-svg')
-      const heightFromSVG = +svgTextElt.style.getPropertyValue('--height-svg')
+      const heightFromSVG =
+        +svgTextElt.style.getPropertyValue('--height-svg') + brush.heightAddition
       let widthSVG = widthFromSVG * 1.2
       let heightSVG = widthSVG * brush.ratioHeight
 

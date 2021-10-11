@@ -128,6 +128,19 @@ body.test {
   height: 45%;
 }
 
+.draw-area-text.brush1 svg {
+  margin-top: -25px;
+}
+.draw-area-text.brush3 svg {
+  margin-top: -40px;
+}
+.draw-area-text.brush4 svg {
+  margin-top: -50px;
+}
+.draw-area-text.brush5 svg {
+  margin-top: -75px;
+}
+
 .draw-area-text {
   position: absolute;
   width: fit-content;

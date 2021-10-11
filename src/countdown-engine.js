@@ -5,7 +5,7 @@ import { PLAYLIST, LAST_SONGS_PLAYLIST } from './playlist.js'
 import { getNextFont, NUMBER_OF_TEXT_AREA } from './font-list'
 import SVGTextAnimate from '../vendors/svg-text-animate-fork/src/svg-text-animate.js'
 
-const DEBUG_MUTE = true // Default = false; true if you don't want the sound
+const DEBUG_MUTE = false // Default = false; true if you don't want the sound
 //const timeBeforeLastSongs = 4 * 60 * 1000 + 8 * 1000 + 5 * 1000 // 4 Minute 08 + 5s of dropdown song // MOP
 const timeBeforeLastSongs = 4 * 60 * 1000 + 52 * 1000 + 5 * 1000 // 4 Minute 52 + 5s of dropdown song // ACDC
 const dropTimeForLastSong = 5 * 1000 // 5 sec
@@ -23,26 +23,36 @@ const BRUSH = [
     name: 'brush-1.svg',
     ratioHeight: 268 / 1001,
     ratioWidth: 1001 / 268,
+    heightAddition: 100,
+    class: 'brush1',
   },
   {
     name: 'brush-stroke-banner-1-resize.svg',
     ratioHeight: 366 / 1001,
     ratioWidth: 1001 / 366,
+    heightAddition: 200,
+    class: 'brush2',
   },
   {
     name: 'brush-stroke-banner-5-resize.svg',
     ratioHeight: 305 / 1024,
     ratioWidth: 1024 / 305,
+    heightAddition: 150,
+    class: 'brush3',
   },
   {
     name: 'brush-stroke-banner-7-resize.svg',
     ratioHeight: 237 / 1000,
     ratioWidth: 1000 / 237,
+    heightAddition: 100,
+    class: 'brush4',
   },
   {
     name: 'banner-2-resize.svg',
     ratioHeight: 187 / 1001,
     ratioWidth: 1001 / 187,
+    heightAddition: 100,
+    class: 'brush5',
   },
 ]
 const HASHTAG = 'devfestgraf'
@@ -107,6 +117,7 @@ class CountDown {
       svgBGElt.appendChild(svgImgBGElt)
       const textElt = document.createElement('DIV')
       textElt.classList.add('draw-area-text')
+      textElt.classList.add(brushToUse.class)
       textElt.id = id
       textElt.dataset.credits = credits.toLocaleUpperCase()
       containerElt.appendChild(svgBGElt)
@@ -159,8 +170,12 @@ class CountDown {
    */
   _sanitize(text) {
     const unAccentText = text.normalize('NFD').replace(/\p{Diacritic}/gu, '')
-    const authorizedChar = unAccentText.toLowerCase().replace(/[^a-zA-Z0-9#@!,?=' ]/, '')
-    const withoutHash = authorizedChar.replace(`#${HASHTAG}`, '').replace(HASHTAG, '')
+    const unEmojiText = unAccentText.replace(
+      /[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}\u{1f1e6}-\u{1f1ff}\u{1f191}-\u{1f251}\u{1f004}\u{1f0cf}\u{1f170}-\u{1f171}\u{1f17e}-\u{1f17f}\u{1f18e}\u{3030}\u{2b50}\u{2b55}\u{2934}-\u{2935}\u{2b05}-\u{2b07}\u{2b1b}-\u{2b1c}\u{3297}\u{3299}\u{303d}\u{00a9}\u{00ae}\u{2122}\u{23f3}\u{24c2}\u{23e9}-\u{23ef}\u{25b6}\u{23f8}-\u{23fa}]/gu,
+      '',
+    )
+    const authorizedChar = unEmojiText.toLowerCase().replace(/[^a-zA-Z0-9#@!,?=' ]/, '')
+    const withoutHash = authorizedChar.replace(`#${HASHTAG}`, '').replace(HASHTAG, '').trim()
     return withoutHash.length > 25 ? `${withoutHash.slice(0, 25)}...` : withoutHash
   }
 
@@ -212,7 +227,8 @@ class CountDown {
       const svgTextElt = document.querySelector(`${textArea.selector} svg`)
       // we retreive size of svg to inject it in img
       const widthFromSVG = +svgTextElt.style.getPropertyValue('--width-svg')
-      const heightFromSVG = +svgTextElt.style.getPropertyValue('--height-svg')
+      const heightFromSVG =
+        +svgTextElt.style.getPropertyValue('--height-svg') + textArea.brush.heightAddition
       let widthSVG = widthFromSVG * 1.2
       let heightSVG = widthSVG * textArea.brush.ratioHeight
 
